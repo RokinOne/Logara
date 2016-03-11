@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Logara";
+}
+
+<section ng-controller="LogaraControl">
+    <nav>
+        <input type="button" ng-click="checked=false" value="unos">
+        <input type="button" ng-click="checked=true" value="popis">
+    </nav>
+
+    <!-- novi, automatski unos -->
+    <section class="novi" ng-hide="checked">
+        <p class="last-session">Zadnja sesija: {{logs[logs.length - 1].START}} - {{logs[logs.length - 1].STOP}}</p>
+
+        <button ID="start-button" class="log" ng-click="getTime()" ng-hide="active">START</button>
+        <button ID="stop-button" class="log" ng-click="endTime()" ng-show="active">STOP</button><br>
+
+        <section ng-show="active">
+            <p>trenutni session pocea: <span>{{logSTART | date:'dd.MM.yyyy hh:mm:ss'}}</span></p>
+            <p ID="temp-komentar" ng-click="comment=true">{{logNOTE}}</p>
+            <form ID="comment-wrapper" ng-show="comment">
+                <input ID="comment-text" name="Comment" type="text" placeholder="komentar" ng-model="logNOTE">
+                <button class="save-comment" ng-click="saveComment()">spremi komentar</button>
+            </form>
+        </section>
+    </section>
+
+    <!-- potpuni popis sa filtriranjem i ručnim unosom -->
+    <section class="popis" ng-show="checked">
+
+        <!-- filtriranje godinom i mjesecem -->
+        <section ID="filteri">
+            <p>
+                <select ng-model="filterYear" ng-options="log.ID as (log.START | year) for log in logs"></select> | 
+                <select ng-model="filterMonth" ng-options="log.ID as (log.START | month) for log in logs"></select>
+            </p>
+        </section>
+
+        <button id="add-entry" ng-click="AddLogDiv()">+</button>
+
+        <!-- straničenje -->
+        <section id="pages">
+            <input class="page-switch" type="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" value="<">
+            <span>{{currentPage + 1}} / {{noPages}}</span>
+            <input class="page-switch" type="button" ng-disabled="currentPage >= logLength/pageMax - 1" ng-click="currentPage = currentPage+1" value=">">
+            <select ng-model="pageSize.selectedOption" ng-options="option.value for option in pageSize.availableOptions track by option.id" ng-change="paging()"></select>
+        </section>
+
+        <!-- forma za novi unos i editiranje unosa -->
+        <section class="edit-delete" ng-show="divLog">
+            <input type="datetime" class="create-form-time" ng-model="logSTART" placeholder="1.1.1900. 0:00:00" />
+            <input type="datetime" class="create-form-time" ng-model="logSTOP" placeholder="1.1.1900. 0:00:00" />
+            <input type="text" class="create-form-note" ng-model="logNOTE" placeholder="komentar" />
+
+            <span ng-click="addUpdateLog()" class="submit-button">GO</span>
+            <span ng-click="cancel()" class="back-button">X</span>
+        </section>
+
+        <table id="tablica">
+            <colgroup>
+                <!--<col span="1" style="width:20px">-->
+                <col span="2" class="table-time">
+                <col class="table-comment">
+                <col span="2" class="table-button">
+            </colgroup>
+            <tr>
+                <!--<th>ID</th>-->
+                <th>Početak</th>
+                <th>Kraj</th>
+                <th>Komentar</th>
+                <th></th>
+            </tr>
+
+            <!-- lista unosa -->
+            <tr ng-repeat="log in logs | filter: filterYear | filter: filterMonth | pagination: currentPage * pageMax | limitTo: pageMax | orderBy: '+ID'">
+                @*<td>
+                    {{log.ID}}
+                </td>*@
+                <td>
+                    {{log.START}}
+                </td>
+                <td>
+                    {{log.STOP}}
+                </td>
+                <td>
+                    {{log.NOTE}}
+                </td>
+                <td>
+                    <span ng-click="editLog(log)" class="edit-button ttable">E</span>
+                </td>
+                <td>
+                    <span ng-click="deleteLog(log)" class="back-button ttable">X</span>
+                </td>
+            </tr>
+        </table>
+    </section>
+</section>

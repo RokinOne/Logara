@@ -1,0 +1,315 @@
+﻿/* COLORS
+656A7F - body plava
+3F4B7F - header tamna
+6578CC - plava
+7E96FF - plava pozadina
+3B6C18 - zelena
+71994C - zelena hover
+CC3D15 - crvena
+CC8977 - crvena hover
+5F05D9 - ljubicasta
+8848DF - ljubicasta hover
+*/
+
+body * {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-width: 300px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: sans-serif;
+    color: white;
+    background: #656A7F;
+}
+
+a {
+    text-decoration: underline;
+    color: white;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    line-height: 50px; /* vertikalno centriranje */
+    padding-left: 50px;
+    text-align: left;
+    font-size: xx-large;
+    background: #3F4B7F;
+}
+
+    header img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+nav input {
+    width: 50%;
+    border: none;
+    font-size: large;
+    color: white;
+    background: #7E96FF;
+}
+
+    nav input:hover {
+        background: #CAD4FF;
+    }
+
+nav {
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 0;
+    margin: 30px auto 0;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    min-width: 300px;
+    margin: 0px auto 15px;
+    background: #7E96FF;
+}
+
+    table td {
+        width: 20%;
+        border-top: solid 1px black;
+        word-wrap: break-word;
+    }
+
+th {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    font-size: small;
+    color: gray;
+}
+
+    footer:hover {
+        color: white;
+        cursor: default;
+    }
+
+/* KLASE */
+.submit-button {
+    display: inline-block;
+    vertical-align: top;
+    width: 5%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: none;
+    font-size: medium;
+    color: white;
+    background: #3B6C18;
+    cursor: pointer;
+}
+
+    .submit-button:hover {
+        background: #71994C;
+    }
+
+.back-button, .edit-button {
+    display: inline-block;
+    vertical-align: top;
+    width: 5%;
+    height: 30px;
+    padding: 5px;
+    background: #CC3D15;
+    font-size: medium;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .back-button:hover, .edit-button:hover {
+        text-decoration: none;
+        color: white;
+        background: #CC8977;
+    }
+
+.edit-button {
+    background: #5F05D9;
+}
+
+    .edit-button:hover {
+        background: #8848DF;
+    }
+
+.create-form-time {
+    display: inline-block;
+    width: 20%;
+}
+
+.create-form-note {
+    display: inline-block;
+    width: 50%;
+}
+
+.edit-delete {
+    background: #6578CC;
+    font-size: 0;
+}
+
+    .edit-delete input {
+        font-size: medium;
+    }
+
+
+tr:hover td .ttable {
+    visibility: visible;
+    cursor: pointer;
+}
+
+.novi {
+    width: 100%;
+    text-align: center;
+    background: #6578CC;
+    overflow: hidden; /* za save-comment botun */
+    padding-bottom: 50px;
+}
+
+.popis {
+    position: relative;
+    width: 100%;
+    background: #6578CC;
+}
+
+button.log {
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    border: none;
+    font-size: large;
+    color: white;
+}
+
+button.save-comment {
+    float: right;
+    height: 25px;
+    margin: 10px 0;
+    border: none;
+    color: white;
+    background: #3B6C18;
+}
+
+    button.save-comment:hover {
+        background: #71994C;
+    }
+
+.ttable {
+    width: 100%;
+    border: none;
+    color: white;
+    visibility: hidden;
+}
+
+.mockup-input {
+    width: 100%;
+    border: none;
+    color: white;
+}
+
+p.last-session {
+    padding: 10px 10px 0;
+    font-size: small;
+    text-align: left;
+}
+
+.table-time {
+    width: 20%;
+    min-width: 200px;
+    font-size: large;
+    font-family: monospace;
+}
+
+.table-comment {
+    width: 50%;
+    text-align: left;
+}
+
+.table-button {
+    width: 5%;
+}
+
+.page-switch {
+    border: none;
+    color: white;
+    background: #5F05D9;
+}
+
+    .page-switch:hover {
+        background: #8848DF;
+    }
+
+/* IDENTIFIKATORI */
+#pages {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: small;
+}
+
+#comment-wrapper {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#comment-text {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 50px;
+    max-height: 300px;
+    margin: 0 auto;
+}
+
+#start-button {
+    background: #3B6C18;
+}
+
+    #start-button:hover {
+        background: #71994C;
+    }
+
+#stop-button {
+    background: #CC3D15;
+}
+
+    #stop-button:hover {
+        background: #CC8977;
+    }
+
+#temp-komentar:hover {
+    background: #7E96FF;
+    cursor: pointer;
+}
+
+#filteri {
+    display: inline-block;
+    max-width: 90%;
+    margin: 10px;
+}
+
+#add-entry {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    font-size: xx-large;
+    color: white;
+    background: #3B6C18;
+}
+
+    #add-entry:hover {
+        background: #71994C;
+    }

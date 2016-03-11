@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html ng-app="LogaraApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logara</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/angularJS")
+    @Scripts.Render("~/bundles/customJS")
+</head>
+<body>
+
+
+    <!--moje-->
+    <header>
+        <img src="~/Content/Logara.png" width="50" height="50">
+        <span>Logara</span>
+    </header>
+
+    @RenderBody()
+
+    <footer>
+        <p>Logara (2016) - RokoRR za Bit-Art Informatika</p>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
